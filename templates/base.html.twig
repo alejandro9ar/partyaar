@@ -1,0 +1,12 @@
+{% extends 'base_general.html.twig' %}
+
+{% block body_general %}
+<body id="page-top">
+    {% include 'header.html.twig' %}
+
+        {% block body %}
+        {% endblock %}
+
+    {% include 'footer.html.twig' %}
+</body>
+{% endblock %}
