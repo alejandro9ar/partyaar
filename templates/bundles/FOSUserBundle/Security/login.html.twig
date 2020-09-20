@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <div>
+
+
+    </div>
+    <header class="masthead bg-primary text-center">
+        <div class="container-sm ">
+
+            <div class="my-3 p-3 bg-light rounded shadow-sm">
+                <h1 class=" border-bottom border-gray pb-2 mb-0 text-center text-secondary ">Identificación</h1>
+
+                <div class="my-4 my">
+
+                    <form action="{{ path("fos_user_security_check") }}" method="post" class=" justify-content-center">
+
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                        <div class="row justify-content-center align-items-center h-100">
+                            <div class="form-group align-content-center">
+                                <label class="control-label" for="username">{{ 'security.login.username'|trans }}</label>
+                                    <input class="form-control text-center" type="text" id="username" name="_username"
+                                           value="{{ last_username }}"
+                                           required="required"/>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center align-items-center h-100">
+                            <div class="form-group align-content-center">
+                                <label class="control-label"
+                                       for="password">{{ 'security.login.password'|trans }}</label>
+                                    <input class="form-control" type="password" id="password" name="_password"
+                                           required="required"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="">
+                                <div class="checkbox">
+                                    <label for="remember_me">
+                                        <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+                                        Recordar datos de
+                                        identificación
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="">
+                                <a class="btn btn-primary" href="{{ path('fos_user_registration_register') }}">
+                                    Registrar
+                                </a>
+                                <input type="submit" class="btn btn-success" id="_submit" name="_submit"
+                                       value="Identificarse"/>
+                            </div>
+
+
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </header>
+    {% include 'footer.html.twig' %}
+{% endblock %}
